@@ -10,7 +10,7 @@ Go to [https://anson0910.github.io/](https://anson0910.github.io/), and follow i
 2. Open **index.html**.
 3. Follow instructions as described on page.
 
-## Code descrition:
+## Code description:
 * **model.js** defines **Cell** class, which has a token (string which could be '_', 'b', or 'r') and a div to store images. <br>
 It also defines a **model** object, which stores the grid and the **PubNub** object.
 
