@@ -31,9 +31,14 @@ var view = {
     },
 
     rerenderBtns: function()  {
-        console.log('here');
         if (controller.getPlayerToken() == 'r')
             $('button').addClass('btn-danger');
+    },
+
+    disableBtns: function()  {
+        $('button').addClass('disabled');
+        $('button').unbind();
+        $('button').off();
     },
 
     // initialize table with empty cells
@@ -60,6 +65,11 @@ var view = {
     updateWhosTurn: function()  {
         this.$whosTurn.text((controller.getTurn() === controller.getPlayerToken()) ?
                         'Your turn' : 'Your opponent\'s turn');
+    },
+
+    updateWin: function(winnerToken)  {
+        var winner = (winnerToken === 'b') ? 'Blue' : 'Red';
+        this.$whosTurn.text(winner + ' won!');
     },
 
     initOpponentUrlSpan: function(html)  {
