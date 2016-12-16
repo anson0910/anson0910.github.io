@@ -23,8 +23,12 @@ td .content {
   font-size: 50px;
 }
 
-#instructions {
+#information {
     font-size: 15px;
+}
+
+#status  {
+    color: #af3131;
 }
 
 .container {

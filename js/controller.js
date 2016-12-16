@@ -7,7 +7,7 @@ var controller = {
 
     initPubnub: function()  {
 
-        this.$instructionsList = $('#instructions-list');
+        this.$instructions = $('#instructions');
 
         model.pubnub.addListener({
             status: function(statusEvent) {
@@ -100,7 +100,7 @@ var controller = {
         if(m.occupancy < 2) {
             view.updateStatus('Waiting for your opponent...');
         } else if(m.occupancy === 2) {
-            controller.$instructionsList.remove();
+            controller.$instructions.remove();
             view.updateStatus('We can start playing!');
             if (isNewPlayer)  {
                 model.playerToken = 'r';
