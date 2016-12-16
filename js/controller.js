@@ -17,7 +17,7 @@ var controller = {
             },
             message: function(m) {
                 var playerToken = m.message.playerToken,
-                    decoded = controller.decodePosition(m.message.position);
+                    decoded = utils.decodePosition(m.message.position);
                 var r = decoded[0], c = decoded[1];
                 controller.subscribeCallback(playerToken, r, c);
             },
@@ -52,7 +52,7 @@ var controller = {
 
     getGameId: function()  {
         // return gameID if specified in URL, or else null
-        return this.getParameterByName('id');
+        return utils.getParameterByName('id');
     },
 
     getTurn: function()  {
@@ -94,7 +94,7 @@ var controller = {
         for (i = this.getRows() - 1; i >= 0; i--)  {
             if (this.getGridToken(i, col) == '_')  {
                 this.publishPosition(model.playerToken,
-                    this.encodePosition(i, col));
+                    utils.encodePosition(i, col));
                 return;
             }
         }
@@ -113,25 +113,7 @@ var controller = {
         });
     },
 
-    encodePosition: function(row, col)  {
-        return row * 10 + col;
-    },
 
-    decodePosition: function(num)  {
-        return [Math.floor(num / 10), num % 10];
-    },
-
-    getParameterByName: function(name, url) {
-        if (!url) {
-          url = window.location.href;
-        }
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    },
 
     // called when subscribed channel gets message
     subscribeCallback: function(playerToken, r, c)  {
