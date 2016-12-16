@@ -16,17 +16,19 @@ var view = {
             th.className = 'text-center';
             btn = document.createElement('BUTTON');
             btn.setAttribute('type', 'button');
+            btn.setAttribute('id', 'btn' + i);
             btn.className = (controller.getPlayerToken() == 'b') ?
                             'btn btn-xs btn-primary':
                             'btn btn-xs btn-danger';
             btn.innerHTML = 'Drop';
-            btn.addEventListener('click', (function(col)  {
+            th.append(btn);
+            this.$tableHeadRow.append(th);
+
+            $('#btn' + i).on('click', (function(col)  {
                 return function()  {
                     controller.dropToken(col);
                 };
             })(i));
-            th.append(btn);
-            this.$tableHeadRow.append(th);
         }
     },
 
@@ -37,7 +39,6 @@ var view = {
 
     disableBtns: function()  {
         $('button').addClass('disabled');
-        $('button').unbind();
         $('button').off();
     },
 
