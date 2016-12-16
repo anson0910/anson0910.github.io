@@ -68,6 +68,10 @@ var view = {
                         'Your turn' : 'Your opponent\'s turn');
     },
 
+    updateDraw: function()  {
+        this.$whosTurn.text("It's a draw!");
+    },
+
     updateWin: function(winnerToken)  {
         var winner = (winnerToken === 'b') ? 'Blue' : 'Red';
         this.$whosTurn.text(winner + ' won!');

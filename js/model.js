@@ -23,6 +23,8 @@ var model = {
         this.playerToken = 'b';
         // who's turn it is, initially 'b'
         this.turn = 'b';
+        // how many moves so far
+        this.moves = 0;
         this.initGrid();
         this.initPubnub();
     },

@@ -84,10 +84,13 @@ var controller = {
         // place token
         controller.setGridToken(r, c, playerToken);
         view.putToken(r, c);
+        model.moves++;
         if (utils.isWinningPlay(r, c))  {
             view.updateWin(model.turn);
             view.disableBtns();
-        }   else {  // update turn
+        }   else if (model.moves == model.ROWS * model.COLS) {
+            view.updateDraw();
+        }   else  {  // update turn
             model.turn = (model.turn === 'b') ? 'r' : 'b';
             view.updateWhosTurn();
         }
